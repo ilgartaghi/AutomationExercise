@@ -13,9 +13,9 @@
 // 13. Click 'Create Account button'
 // 14. Verify that 'ACCOUNT CREATED!' is visible +
 // 15. Click 'Continue' button
-// 16. Verify that 'Logged in as username' is visible
+// 16. Verify that 'Logged in as username' is visible +
 // 17. Click 'Delete Account' button
-// 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+// 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button +
 
 import {test, expect } from '@playwright/test';
 import { SignupPage } from './pages/SignupPage';
@@ -26,7 +26,7 @@ test('Register User', async ({ page }) => {
     await signup.gotoHome();
     await signup.openSignupLogin(); //check
 
-    await signup.startSignup('samir', 'timregression+2@gmail.com');
+    await signup.startSignup('samir', 'timregression+1@gmail.com');
 
     await expect(page.locator("//b[normalize-space()='Enter Account Information']")).toBeVisible();
     await page.waitForTimeout(3000);
@@ -53,7 +53,17 @@ test('Register User', async ({ page }) => {
 
   // Assertion (optional)
   await expect(page.locator('text=ACCOUNT CREATED!')).toBeVisible();
-  await page.locator("//a[normalize-space()='Continue']");
+  await page.locator("//a[normalize-space()='Continue']").click();
+
+    
+  await expect(page.locator("//a[normalize-space()='Delete Account']")).toBeVisible();
+  await expect(page.locator(':text("Logged in as samir")')).toBeVisible();
+
+  //delete account
+  await page.locator("//a[normalize-space()='Delete Account']").click();
+
+  await expect(page.locator('text=ACCOUNT DELETED!')).toBeVisible();
+  await page.locator("//a[normalize-space()='Continue']").click();
 
   await page.waitForTimeout(3000);
 
