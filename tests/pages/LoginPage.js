@@ -12,6 +12,7 @@ exports.LoginPage = class LoginPage {
         this.userEmail = "//input[@data-qa='login-email']";
         this.userPassword = "//input[@placeholder='Password']";
         this.loginButton = "button[data-qa='login-button']";
+        this.logoutButton = "//a[normalize-space()='Logout']";
     }
 
     async gotoHomePage(){
@@ -28,9 +29,11 @@ exports.LoginPage = class LoginPage {
         await this.page.locator(this.userEmail).fill(userEmail);
         await this.page.locator(this.userPassword).fill(userPassword);
         await this.page.locator(this.loginButton).click();
+        await this.page.locator(this.logoutButton).click();
      
     }
 
+   
 
 
 }
