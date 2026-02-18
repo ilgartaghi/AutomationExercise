@@ -8,7 +8,8 @@ exports.ContactUsPage = class ContactUsPage {
         this.ContactMessage = "//textarea[@id='message']";
         this.ChooseFile = "//input[@name='upload_file']";
         this.ContactSubmitButton = "//input[@name='submit']";
-        this.SuccessMessage = "text=Success! Your details have been submitted successfully.";
+        this.SuccessMessage = "div.status.alert.alert-success";
+
         this.HomeButton = "a:has-text('Home')";
 
     }
