@@ -2,9 +2,7 @@ exports.HomePage = class HomePage {
 
         constructor(page){
             this.page = page;
-            
-
-            //Page 1
+           
             this.contactUsLink = "//a[normalize-space()='Contact us']";
 
         }
