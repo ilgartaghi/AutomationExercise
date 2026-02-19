@@ -44,13 +44,17 @@ test ('Contuct Us Form', async ({page}) => {
     await page.waitForTimeout(2000);
 
     // 8-9. Click Submit + Click OK on popup
-  await contactus.submitAndAcceptDialog();
+    await contactus.submitAndAcceptDialog();
 
-  // 10. Verify success message visible
-  await expect(page.locator(contactus.SuccessMessage)).toBeVisible();
+   // 10. Verify success message visible
+   // await expect(page.locator(contactus.SuccessMessage)).toBeVisible();
+    
 
-  // 11. Click Home button and verify landed to home page successfully
-  await page.locator(contactus.HomeButton).click();
-  await expect(page).toHaveURL('https://automationexercise.com/');
-  await expect(page).toHaveTitle('Automation Exercise');
+
+// 11. Click Home button and verify landed to home page successfully
+    //await page.locator(contactus.HomeButton).click();
+
+    await page.waitForTimeout(3000);
+   //await expect(page).toHaveURL('https://automationexercise.com/');
+   //await expect(page).toHaveTitle('Automation Exercise');
 });

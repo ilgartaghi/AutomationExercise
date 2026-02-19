@@ -8,9 +8,9 @@ exports.ContactUsPage = class ContactUsPage {
         this.ContactMessage = "//textarea[@id='message']";
         this.ChooseFile = "//input[@name='upload_file']";
         this.ContactSubmitButton = "//input[@name='submit']";
-        this.SuccessMessage = "div.status.alert.alert-success";
+        this.SuccessMessage = "text=Success! Your details have been submitted successfully.";
 
-        this.HomeButton = "a:has-text('Home')";
+        this.HomeButton = "//span[normalize-space()='Home']";
 
     }
 
@@ -36,12 +36,9 @@ exports.ContactUsPage = class ContactUsPage {
 
      // Click Submit + accept the OK dialog
     async submitAndAcceptDialog() {
-        this.page.once('dialog', async (dialog) => {
-        await dialog.accept(); // clicks OK
-    });
-
-        await this.page.locator(this.ContactSubmitButton).click();
-  }
+  this.page.once('dialog', dialog => dialog.accept());
+  await this.page.locator(this.ContactSubmitButton).click();
+}
 
 
 };
