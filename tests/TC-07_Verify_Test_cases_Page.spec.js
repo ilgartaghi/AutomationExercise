@@ -6,7 +6,7 @@
 
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/HomePage';
-import { ContactUsPage } from './pages/ContactUsPage';
+import { TestCasesPage } from './pages/TestCasesPage';
 
 test ('Contuct Us Form', async ({page}) => {
 
@@ -17,6 +17,13 @@ test ('Contuct Us Form', async ({page}) => {
 
     // 3. Verify that home page is visible successfully
     await expect(page).toHaveTitle('Automation Exercise');
+
+    const tc = new TestCasesPage(page);
+    await tc.TestCases();
+    await expect(page.locator('h2.title.text-center b')).toHaveText(/Test Cases/i);
+
+
+    
 
 
 })
