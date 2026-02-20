@@ -21,7 +21,7 @@
         await products.openProducts(page);
         await expect(page).toHaveTitle('Automation Exercise - All Products');
 
-        await products.productSearch(page);
+        await products.searchProduct('Tshirt');
         
 
 
